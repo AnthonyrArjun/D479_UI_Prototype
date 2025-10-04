@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Coastal Getaways — Booking</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <div>
+          <div class="site-title">Coastal Getaways — Prototype</div>
+          <div class="nav" style="margin-top:8px;">
+            <a href="index.html">Home</a>
+            <a href="lodging.html">Lodging</a>
+            <a href="dining.html">Dining</a>
+            <a href="attractions.html">Attractions</a>
+            <a href="booking.html">Booking</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="left">
+        <h1>Prototype Booking Form</h1>
+        <p>Complete the form to review and confirm a booking (front-end simulation).</p>
+      </div>
+      <div style="min-width:220px;">
+        <div style="background:#fff;padding:14px;border-radius:10px;text-align:center">
+          <strong>Quick Find</strong>
+          <p style="margin:6px 0 0 0;color:#666">Try: "beach activities", "oceanfront hotel", "seafood"</p>
+        </div>
+      </div>
+    </section>
+
+    
+<section style="margin-top:18px">
+  <h2>Booking</h2>
+  <div class="form-card card">
+    <form id="bookingForm" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="col">
+          <label for="name">Full name</label><br>
+          <input id="name" type="text" required placeholder="Jane Doe" />
+        </div>
+        <div class="col">
+          <label for="email">Email</label><br>
+          <input id="email" type="email" required placeholder="you@example.com" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <label for="type">Booking type</label><br>
+          <select id="type" required>
+            <option value="lodging">Lodging: Oceanfront Hotel</option>
+            <option value="dining">Dining: Harbor Seafood Grill (table)</option>
+            <option value="kayak">Attraction: Guided Kayak Tour</option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="date">Date</label><br>
+          <input id="date" type="date" required />
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;margin-top:8px;">
+        <button class="btn" type="submit">Review booking</button>
+        <button class="btn secondary" type="button" onclick="resetForm()">Reset</button>
+      </div>
+    </form>
+
+    <div id="confirmation" style="display:none;margin-top:14px;padding:12px;background:#f1fbfa;border-radius:8px">
+      <h3>Review</h3>
+      <div id="reviewText"></div>
+      <div style="margin-top:12px;">
+        <button class="btn" onclick="confirmBooking()">Confirm</button>
+        <button class="btn secondary" onclick="hideReview()">Edit</button>
+      </div>
+    </div>
+
+    <div id="finalMessage" style="display:none;margin-top:12px;padding:12px;background:#eaf8f7;border-radius:8px">
+    </div>
+  </div>
+</section>
+
+<script>
+function handleSubmit(e){
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const type = document.getElementById('type').value;
+  const date = document.getElementById('date').value;
+  const reviewText = document.getElementById('reviewText');
+  reviewText.innerHTML = `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Type:</strong> ${type}</p><p><strong>Date:</strong> ${date}</p>`;
+  document.getElementById('confirmation').style.display = 'block';
+  window.scrollTo({top:document.body.scrollHeight, behavior:'smooth'});
+}
+function hideReview(){ document.getElementById('confirmation').style.display='none'; }
+function confirmBooking(){ 
+  document.getElementById('confirmation').style.display='none'; 
+  document.getElementById('finalMessage').style.display='block'; 
+  document.getElementById('finalMessage').innerHTML = '<strong>Booking confirmed (prototype):</strong> Thank you — this is a front-end prototype only.';
+}
+function resetForm(){ document.getElementById('bookingForm').reset(); document.getElementById('confirmation').style.display='none'; document.getElementById('finalMessage').style.display='none'; }
+</script>
+
+
+  </main>
+
+  <footer class="container site-footer">
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <div>© Coastal Getaways — Prototype</div>
+      <div class="credits">
+        This booking form is front-end only (no payment). Images credited on Home page per project instructions.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
