@@ -1,5 +1,5 @@
 
-Coastal Getaways — Prototype
+Discover Taniti - Prototype
 Files:
   - index.html, lodging.html, dining.html, attractions.html, booking.html
   - style.css
